@@ -1,0 +1,14 @@
+{"timestamp":"2025-06-25T08:37:38.255675","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-06-25T08:37:38.255999","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/test-dag.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-06-25T08:37:38.747611Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-25T08:37:38.747753Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-25T08:37:38.747829Z","level":"info","event":"Current task name:cleanup","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-25T08:37:38.747959Z","level":"info","event":"Dag name:newyork-taxi-predictor-dag","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-25T08:37:38.740977","level":"info","event":"Tmp dir root location: /tmp","logger":"airflow.task.hooks.airflow.providers.standard.hooks.subprocess.SubprocessHook"}
+{"timestamp":"2025-06-25T08:37:38.741195","level":"info","event":"Running command: ['/usr/bin/bash', '-c', 'rm -rf tmp/*']","logger":"airflow.task.hooks.airflow.providers.standard.hooks.subprocess.SubprocessHook"}
+{"timestamp":"2025-06-25T08:37:38.747021","level":"info","event":"Output:","logger":"airflow.task.hooks.airflow.providers.standard.hooks.subprocess.SubprocessHook"}
+{"timestamp":"2025-06-25T08:37:38.749579","level":"info","event":"Command exited with return code 0","logger":"airflow.task.hooks.airflow.providers.standard.hooks.subprocess.SubprocessHook"}
+{"timestamp":"2025-06-25T08:37:38.749950","level":"info","event":"Pushing xcom","ti":"RuntimeTaskInstance(id=UUID('0197a63c-33dc-714e-a9f1-0fde67fda0d5'), task_id='cleanup', dag_id='newyork-taxi-predictor-dag', run_id='scheduled__2025-06-25T00:00:00+00:00', try_number=1, map_index=-1, hostname='8c000101a4fb', context_carrier={}, task=<Task(BashOperator): cleanup>, bundle_instance=LocalDagBundle(name=dags-folder), max_tries=0, start_date=datetime.datetime(2025, 6, 25, 8, 37, 38, 71044, tzinfo=TzInfo(UTC)), end_date=None, state=<TaskInstanceState.RUNNING: 'running'>, is_mapped=False, rendered_map_index=None)","logger":"task"}
+{"timestamp":"2025-06-25T08:37:38.776003Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-25T08:37:38.776381Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-25T08:37:38.776709Z","level":"info","event":"Task operator:<Task(BashOperator): cleanup>","chan":"stdout","logger":"task"}
