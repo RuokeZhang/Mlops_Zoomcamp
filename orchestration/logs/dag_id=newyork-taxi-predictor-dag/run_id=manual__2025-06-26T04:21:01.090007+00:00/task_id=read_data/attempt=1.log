@@ -1,0 +1,11 @@
+{"timestamp":"2025-06-26T04:21:01.865718","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-06-26T04:21:01.865910","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/test-dag.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-06-26T04:21:02.338224Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T04:21:02.338379Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T04:21:02.338461Z","level":"info","event":"Current task name:read_data","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T04:21:02.338538Z","level":"info","event":"Dag name:newyork-taxi-predictor-dag","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T04:21:05.252700","level":"info","event":"Done. Returned value was: ('tmp/data/train_2024_06.parquet', 'tmp/data/val_2024_07.parquet')","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator"}
+{"timestamp":"2025-06-26T04:21:05.252850","level":"info","event":"Pushing xcom","ti":"RuntimeTaskInstance(id=UUID('0197aa77-b42e-759a-9d21-a235df324059'), task_id='read_data', dag_id='newyork-taxi-predictor-dag', run_id='manual__2025-06-26T04:21:01.090007+00:00', try_number=1, map_index=-1, hostname='a14d0513a647', context_carrier={}, task=<Task(_PythonDecoratedOperator): read_data>, bundle_instance=LocalDagBundle(name=dags-folder), max_tries=0, start_date=datetime.datetime(2025, 6, 26, 4, 21, 1, 615104, tzinfo=TzInfo(UTC)), end_date=None, state=<TaskInstanceState.RUNNING: 'running'>, is_mapped=False, rendered_map_index=None)","logger":"task"}
+{"timestamp":"2025-06-26T04:21:05.266972Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T04:21:05.267108Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T04:21:05.267274Z","level":"info","event":"Task operator:<Task(_PythonDecoratedOperator): read_data>","chan":"stdout","logger":"task"}

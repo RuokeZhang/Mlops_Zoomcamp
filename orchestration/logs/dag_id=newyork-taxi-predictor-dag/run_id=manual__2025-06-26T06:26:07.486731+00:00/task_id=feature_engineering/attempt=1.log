@@ -1,0 +1,11 @@
+{"timestamp":"2025-06-26T06:26:12.890857","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-06-26T06:26:12.891043","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/test-dag.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-06-26T06:26:13.340537Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:26:13.340749Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:26:13.340939Z","level":"info","event":"Current task name:feature_engineering","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:26:13.341108Z","level":"info","event":"Dag name:newyork-taxi-predictor-dag","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:26:13.467547","level":"info","event":"Done. Returned value was: tmp/features.pkl","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator"}
+{"timestamp":"2025-06-26T06:26:13.467707","level":"info","event":"Pushing xcom","ti":"RuntimeTaskInstance(id=UUID('0197aaea-3e0c-71d5-8b27-b3917ffa68df'), task_id='feature_engineering', dag_id='newyork-taxi-predictor-dag', run_id='manual__2025-06-26T06:26:07.486731+00:00', try_number=1, map_index=-1, hostname='a14d0513a647', context_carrier={}, task=<Task(_PythonDecoratedOperator): feature_engineering>, bundle_instance=LocalDagBundle(name=dags-folder), max_tries=0, start_date=datetime.datetime(2025, 6, 26, 6, 26, 12, 739070, tzinfo=TzInfo(UTC)), end_date=None, state=<TaskInstanceState.RUNNING: 'running'>, is_mapped=False, rendered_map_index=None)","logger":"task"}
+{"timestamp":"2025-06-26T06:26:13.479794Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:26:13.479958Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:26:13.480040Z","level":"info","event":"Task operator:<Task(_PythonDecoratedOperator): feature_engineering>","chan":"stdout","logger":"task"}

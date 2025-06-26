@@ -1,0 +1,22 @@
+artifact_path: /Users/bytedance/Documents/ByteRAG/orchestration/artifacts/1/models/m-4ace5611c40148afa810ff5f63397589/artifacts
+flavors:
+  python_function:
+    data: model.xgb
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.11.1
+  xgboost:
+    code: null
+    data: model.xgb
+    model_class: xgboost.core.Booster
+    model_format: xgb
+    xgb_version: 3.0.2
+mlflow_version: 3.1.1
+model_id: m-4ace5611c40148afa810ff5f63397589
+model_size_bytes: 3050402
+model_uuid: m-4ace5611c40148afa810ff5f63397589
+prompts: null
+run_id: f1e14c433f6e41bf8df3437285a3bc8e
+utc_time_created: '2025-06-26 06:09:08.517212'

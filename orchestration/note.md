@@ -46,6 +46,12 @@ curl -LfO 'https://airflow.apache.org/docs/apache-airflow/3.0.0/docker-compose.y
 ```bash
 docker compose up
 ```
+
+5. 进入容器检查网络
+```bash
+docker exec -it 10abc6933fd0 sh
+curl -v https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-01.parquet
+```
 ## Airflow 3.0 基础
 1. 定义DAG（使用TaskFlow API）：
 ```python

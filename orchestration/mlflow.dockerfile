@@ -1,6 +1,7 @@
 FROM python:3.10-slim
 
-RUN pip install mlflow==2.12.1
+RUN pip install mlflow==3.1.1 && \
+    rm -rf /root/.cache/pip
 
 EXPOSE 5000
 

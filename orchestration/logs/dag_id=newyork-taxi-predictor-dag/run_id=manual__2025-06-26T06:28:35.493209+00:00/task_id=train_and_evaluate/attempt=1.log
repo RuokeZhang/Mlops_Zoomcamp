@@ -1,0 +1,65 @@
+{"timestamp":"2025-06-26T06:28:41.991013","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-06-26T06:28:41.991213","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/test-dag.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-06-26T06:28:42.432471Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.432621Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.432725Z","level":"info","event":"Current task name:train_and_evaluate","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.432813Z","level":"info","event":"Dag name:newyork-taxi-predictor-dag","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.441566Z","level":"error","event":"2025/06/26 06:28:42 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: Failed to initialize: Bad git executable.","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.441667Z","level":"error","event":"The git executable must be specified in one of the following ways:","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.441735Z","level":"error","event":"    - be included in your $PATH","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.441804Z","level":"error","event":"    - be set via $GIT_PYTHON_GIT_EXECUTABLE","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.441873Z","level":"error","event":"    - explicitly set via git.refresh(<full-path-to-git-executable>)","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.441942Z","level":"error","event":"","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442003Z","level":"error","event":"All git commands will error until this is rectified.","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442067Z","level":"error","event":"","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442130Z","level":"error","event":"This initial message can be silenced or aggravated in the future by setting the","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442191Z","level":"error","event":"$GIT_PYTHON_REFRESH environment variable. Use one of the following values:","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442274Z","level":"error","event":"    - quiet|q|silence|s|silent|none|n|0: for no message or exception","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442339Z","level":"error","event":"    - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442399Z","level":"error","event":"    - error|e|exception|raise|r|2: for a raised exception","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442452Z","level":"error","event":"","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442509Z","level":"error","event":"Example:","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442567Z","level":"error","event":"    export GIT_PYTHON_REFRESH=quiet","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.442627Z","level":"error","event":"","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.747698Z","level":"info","event":"[0]\tvalidation-rmse:8.75941","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.824391Z","level":"info","event":"[1]\tvalidation-rmse:8.24221","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.894389Z","level":"info","event":"[2]\tvalidation-rmse:7.79651","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:42.960569Z","level":"info","event":"[3]\tvalidation-rmse:7.41460","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.014644Z","level":"info","event":"[4]\tvalidation-rmse:7.09059","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.068676Z","level":"info","event":"[5]\tvalidation-rmse:6.81151","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.131499Z","level":"info","event":"[6]\tvalidation-rmse:6.58003","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.215826Z","level":"info","event":"[7]\tvalidation-rmse:6.38266","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.298786Z","level":"info","event":"[8]\tvalidation-rmse:6.21790","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.392166Z","level":"info","event":"[9]\tvalidation-rmse:6.07984","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.466420Z","level":"info","event":"[10]\tvalidation-rmse:5.96535","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.521909Z","level":"info","event":"[11]\tvalidation-rmse:5.86937","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.570783Z","level":"info","event":"[12]\tvalidation-rmse:5.79069","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.626852Z","level":"info","event":"[13]\tvalidation-rmse:5.72434","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.676402Z","level":"info","event":"[14]\tvalidation-rmse:5.67112","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.719498Z","level":"info","event":"[15]\tvalidation-rmse:5.62534","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.765763Z","level":"info","event":"[16]\tvalidation-rmse:5.58950","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.811201Z","level":"info","event":"[17]\tvalidation-rmse:5.55931","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.860408Z","level":"info","event":"[18]\tvalidation-rmse:5.53348","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.904029Z","level":"info","event":"[19]\tvalidation-rmse:5.51398","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.944346Z","level":"info","event":"[20]\tvalidation-rmse:5.49633","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:43.984995Z","level":"info","event":"[21]\tvalidation-rmse:5.48241","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.021851Z","level":"info","event":"[22]\tvalidation-rmse:5.47015","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.073577Z","level":"info","event":"[23]\tvalidation-rmse:5.46013","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.111876Z","level":"info","event":"[24]\tvalidation-rmse:5.45182","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.165362Z","level":"info","event":"[25]\tvalidation-rmse:5.44446","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.206880Z","level":"info","event":"[26]\tvalidation-rmse:5.43798","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.259557Z","level":"info","event":"[27]\tvalidation-rmse:5.43227","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.314850Z","level":"info","event":"[28]\tvalidation-rmse:5.42815","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.345485Z","level":"info","event":"[29]\tvalidation-rmse:5.42340","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.562592Z","level":"error","event":"2025/06/26 06:28:44 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:44.624243","level":"warning","event":"/home/airflow/.local/lib/python3.12/site-packages/mlflow/xgboost/__init__.py:168: UserWarning: [06:28:44] WARNING: /workspace/src/c_api/c_api.cc:1427: Saving model in the UBJSON format as default.  You can use file extension: `json`, `ubj` or `deprecated` to choose between formats.\n  xgb_model.save_model(model_data_path)\n","logger":"py.warnings"}
+{"timestamp":"2025-06-26T06:28:46.119503Z","level":"error","event":"\u001b[31m2025/06/26 06:28:46 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.\u001b[0m","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:46.192558Z","level":"error","event":"Registered model 'best_model_ready_to_deploy' already exists. Creating a new version of this model...","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:46.221412Z","level":"error","event":"2025/06/26 06:28:46 INFO mlflow.store.model_registry.abstract_store: Waiting up to 300 seconds for model version to finish creation. Model name: best_model_ready_to_deploy, version 1","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:46.221654Z","level":"error","event":"Created version '1' of model 'best_model_ready_to_deploy'.","chan":"stderr","logger":"task"}
+{"timestamp":"2025-06-26T06:28:46.242067Z","level":"info","event":"🏃 View run rogue-cub-820 at: http://mlflow:5000/#/experiments/2/runs/39ab44a999eb449aadeded20be57ed16","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:46.242219Z","level":"info","event":"🧪 View experiment at: http://mlflow:5000/#/experiments/2","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:46.248240","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator"}
+{"timestamp":"2025-06-26T06:28:46.344678Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:46.344821Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-26T06:28:46.344919Z","level":"info","event":"Task operator:<Task(_PythonDecoratedOperator): train_and_evaluate>","chan":"stdout","logger":"task"}

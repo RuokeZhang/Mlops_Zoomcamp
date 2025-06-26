@@ -1,3 +1,6 @@
+from io import BytesIO
+import mlflow.xgboost
+import requests
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from sklearn.feature_extraction import DictVectorizer
@@ -12,11 +15,14 @@ import xgboost as xgb
 import pickle
 from airflow.decorators import task, dag
 
-mlflow.set_tracking_uri("http://mlflow:5000")  # Docker内部地址
-mlflow.set_experiment("nyc-taxi-experiment")
+mlflow.set_tracking_uri("http://mlflow:5000")  
+mlflow.set_experiment("nyc-taxi-experiment-1")
+
 def read_dataframe(year: int, month: int) -> pd.DataFrame:
     url = f'https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_{year}-{month:02d}.parquet'
 
+    
+    # 使用pandas读取parquet文件
     df = pd.read_parquet(url)
 
     df['duration'] = df.lpep_dropoff_datetime - df.lpep_pickup_datetime
@@ -59,7 +65,7 @@ def taxi_pipeline():
     
         # 直接从上下文获取逻辑日期
         logical_date = context["logical_date"]
-        year = logical_date.year
+        year = logical_date.year-1
         month = logical_date.month
         train_df = read_dataframe(year, month)
         next_year = year + 1 if month == 12 else year
@@ -98,6 +104,8 @@ def taxi_pipeline():
         #get dfs
         with open(feature_path, "rb") as f:
             X_train, y_train, X_val, y_val, dv = pickle.load(f)
+
+    
             
         with mlflow.start_run() as run:
             train = xgb.DMatrix(X_train, label=y_train)
@@ -131,16 +139,14 @@ def taxi_pipeline():
                 pickle.dump(dv, f_out)
             mlflow.log_artifact("models/preprocessor.b", artifact_path="preprocessor")
 
-            mlflow.xgboost.log_model(booster, artifact_path="models_mlflow")
-            model_uri = f"runs:/{run.info.run_id}/models_mlflow"
-            mlflow.register_model(model_uri, "nyc-taxi-model")
 
-            run_id = run.info.run_id
-            #make sure the returned type is string
-            if not isinstance(run_id, str):
-                run_id = str(run_id)
+            mlflow.xgboost.log_model(
+            xgb_model=booster,
+            artifact_path="model",  # 固定路径，与后续注册匹配
+            registered_model_name="best_model_ready_to_deploy"  # 可直接注册
+            )
 
-            return run_id
+
         
     cleanup_task = BashOperator(
         task_id="cleanup",

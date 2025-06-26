@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+from io import BytesIO
 import pickle
 from pathlib import Path
 
 import pandas as pd
+import requests
 import xgboost as xgb
 
 from sklearn.feature_extraction import DictVectorizer
@@ -22,7 +24,30 @@ models_folder.mkdir(exist_ok=True)
 
 def read_dataframe(year, month):
     url = f'https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_{year}-{month:02d}.parquet'
-    df = pd.read_parquet(url)
+    headers = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "zh-CN,zh;q=0.9",
+    "Referer": "https://www.nyc.gov/",
+    }
+    
+
+    # 使用requests发送带请求头的请求，并启用流式下载
+    response = requests.get(url, headers=headers, stream=True, timeout=30)
+    response.raise_for_status()  # 检查请求是否成功
+    
+    # 使用BytesIO将响应内容转换为文件对象
+    file_obj = BytesIO()
+    for chunk in response.iter_content(chunk_size=8192):
+        if chunk:  # 过滤掉空块
+            file_obj.write(chunk)
+    
+    # 将文件对象重置到起始位置
+    file_obj.seek(0)
+    
+    # 使用pandas读取parquet文件
+    df = pd.read_parquet(file_obj)
 
     df['duration'] = df.lpep_dropoff_datetime - df.lpep_pickup_datetime
     df.duration = df.duration.apply(lambda td: td.total_seconds() / 60)
@@ -84,7 +109,12 @@ def train_model(X_train, y_train, X_val, y_val, dv):
             pickle.dump(dv, f_out)
         mlflow.log_artifact("models/preprocessor.b", artifact_path="preprocessor")
 
-        mlflow.xgboost.log_model(booster, artifact_path="models_mlflow")
+        mlflow.xgboost.log_model(
+            xgb_model=booster,
+            artifact_path="model",  # 固定路径，与后续注册匹配
+            registered_model_name="best_model_ready_to_deploy"  # 可直接注册
+        )
+
 
         return run.info.run_id
 
@@ -105,7 +135,9 @@ def run(year, month):
 
     run_id = train_model(X_train, y_train, X_val, y_val, dv)
     print(f"MLflow run_id: {run_id}")
+    
     return run_id
+
 
 
 if __name__ == "__main__":
