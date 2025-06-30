@@ -1,0 +1,8 @@
+mlflow==3.1.1
+scikit-learn
+pandas
+hyperopt
+xgboost
+fastparquet
+python-dateutil
+seaborn
