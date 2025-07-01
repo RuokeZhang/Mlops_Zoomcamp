@@ -25,6 +25,8 @@ gunicorn --bind=0.0.0.0:9696 predict:app
 pipenv install scikit-learn==1.7.0 flask --python=3.12
 、
 pipenv shell #进入环境
+
+pipenv --venv #环境路径
 ```
 why use pipenv?  
 >不同版本的机器学习库可能存在 API 变化或算法实现差异, 比如我的LinearRegression是用skleaern 1.0.2训练出来的，那么我再加载它的时候，也需要用sklearn用它进行predict

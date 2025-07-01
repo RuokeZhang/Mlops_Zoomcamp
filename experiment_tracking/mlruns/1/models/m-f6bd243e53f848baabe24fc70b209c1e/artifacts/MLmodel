@@ -1,0 +1,22 @@
+artifact_path: /Users/bytedance/Documents/ByteRAG/experiment_tracking/mlruns/1/models/m-f6bd243e53f848baabe24fc70b209c1e/artifacts
+flavors:
+  python_function:
+    data: model.xgb
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.13.5
+  xgboost:
+    code: null
+    data: model.xgb
+    model_class: xgboost.core.Booster
+    model_format: xgb
+    xgb_version: 3.0.2
+mlflow_version: 3.1.1
+model_id: m-f6bd243e53f848baabe24fc70b209c1e
+model_size_bytes: 3921890
+model_uuid: m-f6bd243e53f848baabe24fc70b209c1e
+prompts: null
+run_id: 00bb9ca793304f0cb76ebbf19e85566e
+utc_time_created: '2025-07-01 06:28:45.578207'
