@@ -46,7 +46,7 @@ https://www.youtube.com/watch?v=1ykg4YmbFVA&list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhE
 #进入EC2
 ssh -i "mlflow-ec2-pair.pem" ec2-user@ec2-3-87-201-140.compute-1.amazonaws.com
 #在EC2启动mlflow server
-mlflow server -h 0.0.0.0 -p 5000 --backend-store-uri postgresql://postgres:bNugbMpSpmy086EIg7Zm@mlflow-database.ca5csqkw4lt9.us-east-1.rds.amazonaws.com:5432/mlflow_db --default-artifact-root s3://mlflow-artifacts-remote-ruoke
+mlflow server -h 0.0.0.0 -p 5000 --backend-store-uri postgresql://postgres:Vando2018-@mlflow-database.ca5csqkw4lt9.us-east-1.rds.amazonaws.com:5432/mlflow_db --default-artifact-root s3://mlflow-artifacts-remote-ruoke
 ```
 
 ![s3](./image/image.png)

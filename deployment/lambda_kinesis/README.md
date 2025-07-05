@@ -77,12 +77,13 @@ sequenceNumber是Kinesis 为每条记录分配的唯一标识符，在同一个�
 ### 编码的情况
 ```shell
 # 原始 JSON（注意：必须是单行）
-json='{"ride":{"PULocationID":130,"DOLocationID":205,"trip_distance":3.66},"ride_id":156}'
+json='{"ride":{"PULocationID":130,"DOLocationID":205,"trip_distance":3.66},"ride_id":136}'
 
 # 生成 Base64（Linux/macOS 系统）
 encoded=$(echo -n "$json" | base64)
 
 # 执行命令
+KINESIS_STREAM_INPUT=ride-events
 aws kinesis put-record \
   --stream-name ${KINESIS_STREAM_INPUT} \
   --partition-key 1 \
@@ -147,3 +148,45 @@ model = mlflow.pyfunc.load_model(logged_model)
 
 ```
 需要用到模型时，直接加载即可！
+
+## Containerization
+Lambda支持通过容器镜像部署，可以用官方提供的基础镜像：public.ecr.aws/lambda/python:3.9.2025.07.05.07  
+见本目录的 Dockerfile。这个镜像里面有一个 lambda 的服务，主要内容是路由。也会将环境变量用来
+
+dockerfile 里面指定：开始执行 lambda_handler 这个函数，
+往 lambda 基础镜像这个 URL 发送请求：http://localhost:8080/2015-03-31/functions/function/invocations，lambda_handler就可以接收 event 并且开始处理
+
+这个
+
+```shell
+docker build -t stream-model-duration:v1 .
+
+docker run -it --rm \
+    -p 8080:8080 \
+    -e PREDICTIONS_STREAM_NAME="ride_predictions" \
+    -e TEST_RUN="True" \
+    -e AWS_DEFAULT_REGION="us-east-1" \
+    -e AWS_ACCESS_KEY_ID="" \
+    -e AWS_SECRET_ACCESS_KEY="" \
+    stream-model-duration:v1
+```
+
+接着创建一个 ECR 容器
+```shell
+aws ecr create-repository --repository-name duration-model
+
+# 我们需要给本地的 docker 一个凭证去访问 ECR
+# 获取登录令牌（带Profile）
+TOKEN=$(aws ecr get-login-password --region us-east-1 --profile mlops)
+# 执行Docker登录（替换为你的ECR仓库地址）
+docker login -u AWS -p $TOKEN https://596387592324.dkr.ecr.us-east-1.amazonaws.com
+
+# push
+REMOTE_URI="596387592324.dkr.ecr.us-east-1.amazonaws.com/duration-model"
+REMOTE_TAG="v1"
+REMOTE_IMAGE=${REMOTE_URI}:${REMOTE_TAG}
+
+LOCAL_IMAGE="stream-model-duration:v1"
+docker tag ${LOCAL_IMAGE} ${REMOTE_IMAGE}
+docker push ${REMOTE_IMAGE}
+```

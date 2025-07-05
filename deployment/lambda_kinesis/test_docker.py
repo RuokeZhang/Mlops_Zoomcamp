@@ -1,5 +1,4 @@
-
-import deployment.lambda_kinesis.lambda_function_local as lambda_function_local
+import requests
 
 event = {
     "Records": [
@@ -21,7 +20,8 @@ event = {
         }
     ]
 }
+ 
 
-
-result = lambda_function_local.lambda_handler(event, None)
-print(result)
+url = 'http://localhost:8080/2015-03-31/functions/function/invocations'
+response = requests.post(url, json=event)
+print(response.json())

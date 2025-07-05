@@ -1,0 +1,11 @@
+mlflow==3.1.1
+pandas
+hyperopt
+xgboost
+fastparquet
+python-dateutil
+scikit-learn
+flask
+gunicorn
+numpy
+requests

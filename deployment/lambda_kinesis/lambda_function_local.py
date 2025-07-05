@@ -7,14 +7,24 @@ import mlflow
 
 kinesis_client = boto3.client('kinesis')
 
+os.environ["AWS_PROFILE"] = "dev" # fill in with your AWS profile. More info: https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup.html#setup-credentials
+
+TRACKING_SERVER_HOST = "44.212.1.183" # fill in with the public DNS of the EC2 instance
+mlflow.set_tracking_uri(f"http://{TRACKING_SERVER_HOST}:5000")
+
+
 PREDICTIONS_STREAM_NAME = os.getenv('PREDICTIONS_STREAM_NAME', 'ride_predictions')
 
 
 RUN_ID = os.getenv('RUN_ID')
 
 logged_model = f's3://mlflow-artifacts-remote-ruoke/2/models/m-33b498cdc08f4c5483e73be3c998cbd7/artifacts'
-# logged_model = f'runs:/{RUN_ID}/model'
+
 model = mlflow.pyfunc.load_model(logged_model)
+print(model)
+#dv_model=mlflow.sklearn.load_model(dv_model_path)
+
+
 
 
 TEST_RUN = os.getenv('TEST_RUN', 'False') == 'True'
@@ -23,6 +33,7 @@ def prepare_features(ride):
     features = {}
     features['PU_DO'] = '%s_%s' % (ride['PULocationID'], ride['DOLocationID'])
     features['trip_distance'] = ride['trip_distance']
+    #features= dv_model.transform([features])
     return features
 
 
